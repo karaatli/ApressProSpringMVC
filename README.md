@@ -1,4 +1,6 @@
-ApressProSpringMVC
-==================
+Pro Spring MVC Code
+===================
 
-ApressProSpringMVC Training Sources
+This repository contains the code samples and sample application as build and published in Pro Spring MVC.
+
+
