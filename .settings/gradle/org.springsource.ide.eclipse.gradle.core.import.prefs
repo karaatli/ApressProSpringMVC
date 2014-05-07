@@ -1,0 +1,10 @@
+#org.springsource.ide.eclipse.gradle.core.preferences.GradleImportPreferences
+#Wed May 07 19:09:16 EDT 2014
+addResourceFilters=true
+afterTasks=afterEclipseImport;
+beforeTasks=cleanEclipse;eclipse;
+enableAfterTasks=true
+enableBeforeTasks=true
+enableDSLD=false
+enableDependendencyManagement=true
+projects=;appendixA-bookstore;bookstore-shared;bookstore-web-resources;chapter10-bookstore;chapter11-bookstore;chapter12-bookstore;chapter13-bookstore;chapter1-bookstore;chapter2-bookstore;chapter2-samples;chapter5-bookstore;chapter6-bookstore;chapter7-bookstore;chapter8-bookstore;chapter9-bookstore;

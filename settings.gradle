@@ -3,7 +3,6 @@ rootProject.name = 'bookstore'
 def String[] modules = [
     'bookstore-shared',
     'bookstore-web-resources',
-	'JuniasBookstore',
 	'chapter1-bookstore',
 	'chapter2-bookstore',
 	'chapter2-samples',
