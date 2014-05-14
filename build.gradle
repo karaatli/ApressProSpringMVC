@@ -20,7 +20,7 @@ buildscript {
             addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
         }
     }
-
+    
     dependencies { 
 		classpath 'bmuschko:gradle-tomcat-plugin:0.9.3' 
 		classpath 'bmuschko:gradle-cargo-plugin:0.5.4'
@@ -38,7 +38,6 @@ allprojects {
     repositories {
         mavenRepo url: 'http://maven.springframework.org/release'
 		mavenRepo url: 'http://maven.springframework.org/snapshot'
-        mavenCentral()
         mavenRepo url: 'http://maven.springframework.org/milestone'
         mavenRepo url: 'https://repository.jboss.org/nexus/content/repositories/releases/'
         mavenRepo url: 'http://download.java.net/maven/glassfish/org/glassfish/'
@@ -54,10 +53,14 @@ configure(webProjects) {
     apply plugin: 'jetty'
     apply plugin: 'tomcat'
     apply plugin: 'cargo'
-
+    
+    jar {
+	    baseName = 'gs-rest-service'
+	    version =  '0.1.0'
+	}
+    
     dependencies() {
         compile project(':bookstore-shared'), project(':bookstore-web-resources')
-
         compile "org.apache.tiles:tiles-servlet:$tilesVersion"
         compile "org.apache.tiles:tiles-jsp:$tilesVersion"
         compile "org.apache.tiles:tiles-api:$tilesVersion"
@@ -90,7 +93,7 @@ configure(webProjects) {
     war {   
         version = '' //We do this to make the wars versionless, when they are deployed with cargo, the context
                      //root of the app is equal to the file name, which is equal to the sample directory name.
-     }
+    }
 
     task systemTest(type: Test) {
         include '**/*FrontendTest.*'

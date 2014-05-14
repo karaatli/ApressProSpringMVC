@@ -22,3 +22,16 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 !MESSAGE Converted legacy Roo plugin state locations
 !SUBENTRY 1 org.springsource.ide.eclipse.commons.frameworks.core 0 0 2014-05-07 18:53:59.143
 !MESSAGE Converted legacy STS plugin state locations
+!SESSION 2014-05-13 22:19:39.955 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data /home/kjunias/workspace/Training/ApressProSpringMVC -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.mylyn.tasks.ui 4 0 2014-05-13 22:19:55.081
+!MESSAGE Could not load repository template extension contributed by org.springsource.ide.eclipse.dashboard.ui with connectorKind jira
+
+!ENTRY org.eclipse.mylyn.tasks.ui 4 0 2014-05-13 22:19:55.089
+!MESSAGE Could not load repository template extension contributed by org.springsource.ide.eclipse.dashboard.ui with connectorKind jira

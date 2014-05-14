@@ -6,10 +6,12 @@ import javax.servlet.ServletRegistration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import com.apress.prospringmvc.bookstore.config.InfrastructureContextConfiguration;
 import com.apress.prospringmvc.bookstore.web.config.WebMvcContextConfiguration;
 
 /**
@@ -40,15 +42,21 @@ public class BookstoreWebApplicationInitializer implements WebApplicationInitial
 
     @Override
     public void onStartup(final ServletContext servletContext) throws ServletException {
-        registerDispatcherServlet(servletContext);
+		registerListener(servletContext);
+    	registerDispatcherServlet(servletContext);
     }
 
-    private void registerDispatcherServlet(final ServletContext servletContext) {
+    private void registerListener(final ServletContext servletContext) {
+    	AnnotationConfigWebApplicationContext rootContext = (AnnotationConfigWebApplicationContext) createContext(InfrastructureContextConfiguration.class);
+    	servletContext.addListener(new ContextLoaderListener(rootContext));
+	}
+
+	private void registerDispatcherServlet(final ServletContext servletContext) {
         WebApplicationContext dispatcherContext = createContext(WebMvcContextConfiguration.class);
         DispatcherServlet dispatcherServlet = new DispatcherServlet(dispatcherContext);
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", dispatcherServlet);
         dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("*.htm");
+        dispatcher.addMapping("/");
     }
 
     /**
@@ -57,8 +65,9 @@ public class BookstoreWebApplicationInitializer implements WebApplicationInitial
      * @return
      */
     private WebApplicationContext createContext(final Class<?>... annotatedClasses) {
-        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.register(annotatedClasses);
+    	AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+    	context.getEnvironment().setActiveProfiles("local");
+    	context.register(annotatedClasses);
         return context;
     }
 }
